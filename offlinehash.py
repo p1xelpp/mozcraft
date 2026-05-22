@@ -3,7 +3,7 @@ import json
 import uuid
 
 IDENTITY_FILE = "identity.json"
-PREFIX = "offline_"  # u can change the prefix
+PREFIX = "offline_"  # change if you want a different style
 
 def load_or_create_identity():
     if os.path.exists(IDENTITY_FILE):
@@ -13,7 +13,7 @@ def load_or_create_identity():
             if "id" in data and isinstance(data["id"], str) and len(data["id"]) > 0:
                 return data["id"]
         except Exception:
-            pass  # if file is gone = new name
+            pass  # if file is corrupt → create new one
 
     identity = uuid.uuid4().hex[:8]
     with open(IDENTITY_FILE, "w", encoding="utf-8") as f:

@@ -1,17 +1,19 @@
 # vulkanpatch.py
-#ts sucks
+#
+# This file adds Vulkan-mode JVM flags to your launcher.
+# You use this as a library: import and then apply_vulkan_patch(jvm_args)
 
 def apply_vulkan_patch(jvm_args: list) -> list:
     """
-    Voegt Vulkan‑mode flags toe aan de JVM‑argumenten.
-    Dit forceert Minecraft om Vulkan te gebruiken i.p.v. OpenGL.
+    Adds Vulkan-mode flags to JVM arguments.
+    This forces Minecraft to use Vulkan instead of OpenGL.
     """
 
     vulkan_flags = [
-        "-Dminecraft.gl=disabled",        # no openGl
-        "-Dminecraft.vulkan=true",        # yes vulkan
-        "-Dorg.lwjgl.opengl.libname=disabled"  # no lwjgl u need to cheat on openGL
+        "-Dminecraft.gl=disabled",        # Disable OpenGL
+        "-Dminecraft.vulkan=true",        # Force Vulkan backend
+        "-Dorg.lwjgl.opengl.libname=disabled"  # LWJGL must not load GL libs
     ]
 
-    # roger that
+    # Add to existing JVM args
     return jvm_args + vulkan_flags

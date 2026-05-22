@@ -7,8 +7,9 @@ def apply_offline_patch(jvm_args: list) -> list:
     """
     offline_flags = [
         "-Dminecraft.server.online-mode=false",
-        "-Dminecraft.api.auth.host=offline",
-        "-Dminecraft.api.session.host=offline",
-        "-Dminecraft.api.services.host=offline"
+        "-Dminecraft.api.auth.host=http://offline",
+        "-Dminecraft.api.session.host=http://offline",
+        "-Dminecraft.api.services.host=http://offline",
+        "-Dminecraft.api.profiles.host=http://offline"
     ]
     return jvm_args + offline_flags

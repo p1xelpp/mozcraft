@@ -1,6 +1,9 @@
 # argpatch.py
 
 def substitute_args(args: list, values: dict) -> list:
+    """
+    Vervangt alle ${...} variabelen in Minecraft arguments.
+    """
     out = []
     for arg in args:
         if isinstance(arg, str):
